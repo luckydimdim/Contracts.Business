@@ -5,6 +5,7 @@ using Cmas.BusinessLayers.Contracts.Entities;
 using Cmas.Infrastructure.Domain.Commands;
 using Cmas.Infrastructure.Domain.Criteria;
 using Cmas.Infrastructure.Domain.Queries;
+using System;
 
 namespace Cmas.BusinessLayers.Contracts
 {
@@ -20,11 +21,15 @@ namespace Cmas.BusinessLayers.Contracts
         }
 
 
-        public async Task<string> CreateContract(Contract form)
+        public async Task<string> CreateContract(Contract contract)
         {
+            contract.Id = null;
+            contract.UpdatedAt = DateTime.Now;
+            contract.CreatedAt = DateTime.Now;
+
             var context = new CreateContractCommandContext
             {
-                Form = form
+                Form = contract
             };
 
             context = await _commandBuilder.Execute(context);
@@ -32,11 +37,13 @@ namespace Cmas.BusinessLayers.Contracts
             return context.Id;
         }
 
-        public async Task<string> UpdateContract(string id, Contract form)
+        public async Task<string> UpdateContract(string id, Contract contract)
         {
+            contract.UpdatedAt = DateTime.Now;
+
             var context = new UpdateContractCommandContext
             {
-                Form = form
+                Form = contract
             };
 
             context = await _commandBuilder.Execute(context);
