@@ -22,7 +22,7 @@ namespace Cmas.BusinessLayers.Contracts.Entities
 
         public string Currency;
 
-        public string Amount;
+        public double Amount;
 
         public bool VatIncluded;
 
