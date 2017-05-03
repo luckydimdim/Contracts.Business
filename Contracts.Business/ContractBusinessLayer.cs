@@ -21,8 +21,10 @@ namespace Cmas.BusinessLayers.Contracts
         }
 
 
-        public async Task<string> CreateContract(Contract contract)
+        public async Task<string> CreateContract()
         {
+            Contract contract = new Contract();
+
             contract.Id = null;
             contract.UpdatedAt = DateTime.Now;
             contract.CreatedAt = DateTime.Now;
