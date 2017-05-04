@@ -9,12 +9,12 @@ using System;
 
 namespace Cmas.BusinessLayers.Contracts
 {
-    public class ContractBusinessLayer
+    public class ContractsBusinessLayer
     {
         private readonly ICommandBuilder _commandBuilder;
         private readonly IQueryBuilder _queryBuilder;
 
-        public ContractBusinessLayer(ICommandBuilder commandBuilder, IQueryBuilder queryBuilder)
+        public ContractsBusinessLayer(ICommandBuilder commandBuilder, IQueryBuilder queryBuilder)
         {
             _commandBuilder = commandBuilder;
             _queryBuilder = queryBuilder;
