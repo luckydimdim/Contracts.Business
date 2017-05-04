@@ -14,9 +14,9 @@ namespace Cmas.BusinessLayers.Contracts.Entities
 
         public string Number;
 
-        public string StartDate;
+        public DateTime? StartDate;
 
-        public string FinishDate;
+        public DateTime? FinishDate;
 
         public string ContractorName;
 

@@ -26,8 +26,8 @@ namespace Cmas.BusinessLayers.Contracts
             Contract contract = new Contract();
 
             contract.Id = null;
-            contract.UpdatedAt = DateTime.Now;
-            contract.CreatedAt = DateTime.Now;
+            contract.UpdatedAt = DateTime.UtcNow;
+            contract.CreatedAt = DateTime.UtcNow;
 
             var context = new CreateContractCommandContext
             {
@@ -41,7 +41,7 @@ namespace Cmas.BusinessLayers.Contracts
 
         public async Task<string> UpdateContract(string id, Contract contract)
         {
-            contract.UpdatedAt = DateTime.Now;
+            contract.UpdatedAt = DateTime.UtcNow;
 
             var context = new UpdateContractCommandContext
             {
