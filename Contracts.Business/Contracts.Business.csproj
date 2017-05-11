@@ -23,6 +23,7 @@
 
   <ItemGroup>
     <PackageReference Include="Cmas.Infrastructure.Domain" Version="*" />
+    <PackageReference Include="Cmas.Infrastructure.Security" Version="*" />
   </ItemGroup>
 
 </Project>

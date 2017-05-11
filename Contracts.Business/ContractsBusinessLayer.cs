@@ -6,6 +6,7 @@ using Cmas.Infrastructure.Domain.Commands;
 using Cmas.Infrastructure.Domain.Criteria;
 using Cmas.Infrastructure.Domain.Queries;
 using System;
+using System.Security.Claims;
 
 namespace Cmas.BusinessLayers.Contracts
 {
@@ -13,11 +14,13 @@ namespace Cmas.BusinessLayers.Contracts
     {
         private readonly ICommandBuilder _commandBuilder;
         private readonly IQueryBuilder _queryBuilder;
+        private readonly ClaimsPrincipal _claimsPrincipal;
 
-        public ContractsBusinessLayer(ICommandBuilder commandBuilder, IQueryBuilder queryBuilder)
+        public ContractsBusinessLayer(IServiceProvider serviceProvider, ClaimsPrincipal claimsPrincipal)
         {
-            _commandBuilder = commandBuilder;
-            _queryBuilder = queryBuilder;
+            _claimsPrincipal = claimsPrincipal;
+            _commandBuilder = (ICommandBuilder)serviceProvider.GetService(typeof(ICommandBuilder));
+            _queryBuilder = (IQueryBuilder)serviceProvider.GetService(typeof(IQueryBuilder));
         }
 
 
