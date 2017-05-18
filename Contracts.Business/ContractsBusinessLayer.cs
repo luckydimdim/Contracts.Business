@@ -32,6 +32,8 @@ namespace Cmas.BusinessLayers.Contracts
             contract.UpdatedAt = DateTime.UtcNow;
             contract.CreatedAt = DateTime.UtcNow;
 
+            contract.Amounts = new List<Amount>{new Amount{CurrencySysName = "RUR", Value = 0}};
+
             var context = new CreateContractCommandContext
             {
                 Form = contract
