@@ -1,6 +1,6 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Cmas.BusinessLayers.Contracts.Entities
 {
@@ -49,7 +49,7 @@ namespace Cmas.BusinessLayers.Contracts.Entities
         /// <summary>
         /// Стоимости договора
         /// </summary>
-        public IList<Amount> Amounts;
+        public IList<Amount> Amounts = new List<Amount>();
 
         /// <summary>
         /// НДC включен в стоимость договора
@@ -80,5 +80,13 @@ namespace Cmas.BusinessLayers.Contracts.Entities
         /// Системное имя шаблона для НЗ и TS
         /// </summary>
         public string TemplateSysName;
+
+        /// <summary>
+        /// Валюты договора
+        /// </summary>
+        public IEnumerable<string> Currencies
+        {
+            get { return Amounts.Select(a => a.CurrencySysName).Distinct(); }
+        }
     }
 }
