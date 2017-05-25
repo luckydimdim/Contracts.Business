@@ -34,6 +34,7 @@ namespace Cmas.BusinessLayers.Contracts
             contract.Id = null;
             contract.UpdatedAt = DateTime.UtcNow;
             contract.CreatedAt = DateTime.UtcNow;
+            contract.TemplateSysName = "default";
 
             // Добавляем по умолчанию стоимость  в рублях
             contract.Amounts.Add(new Amount { CurrencySysName = "RUR" });
