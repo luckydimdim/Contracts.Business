@@ -27,17 +27,20 @@ namespace Cmas.BusinessLayers.Contracts
         /// Создать договор
         /// </summary>
         /// <returns>ID договора</returns>
-        public async Task<string> CreateContract()
+        public async Task<string> CreateContract(Contract contract)
         {
-            Contract contract = new Contract();
-
             contract.Id = null;
             contract.UpdatedAt = DateTime.UtcNow;
             contract.CreatedAt = DateTime.UtcNow;
-            contract.TemplateSysName = "default";
 
-            // Добавляем по умолчанию стоимость  в рублях
-            contract.Amounts.Add(new Amount { CurrencySysName = "RUR" });
+            if (string.IsNullOrEmpty(contract.TemplateSysName))
+                contract.TemplateSysName = "default";
+
+            if (contract.Amounts.Count == 0)
+            {
+                // Добавляем по умолчанию стоимость  в рублях
+                contract.Amounts.Add(new Amount {CurrencySysName = "RUR"});
+            }
 
             var context = new CreateContractCommandContext
             {
